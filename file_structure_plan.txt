@@ -1,0 +1,35 @@
+we-better-worked/
+├── Cargo.toml
+├── .env                     # (optional) Environment config (DB path, etc.)
+├── src/
+│   ├── main.rs              # App entry point, server setup
+│   ├── lib.rs               # (optional) Shared setup
+│
+│   ├── db/                  # Database logic
+│   │   ├── mod.rs
+│   │   ├── models.rs        # Data types, structs
+│   │   ├── queries.rs       # SQL queries (or inline in handlers)
+│   │   └── migrations/      # SQL migration files (if using sqlx-cli)
+│
+│   ├── routes/              # HTTP handlers
+│   │   ├── mod.rs
+│   │   ├── auth.rs          # login, register
+│   │   ├── dashboard.rs     # main logged-in user view
+│   │   └── entries.rs       # time entry create/edit/delete
+│
+│   ├── templates/           # HTML templates (e.g. with Askama, minijinja)
+│   │   ├── base.html        # layout shell
+│   │   ├── login.html
+│   │   ├── dashboard.html
+│   │   └── partials/        # e.g. HTMX fragments
+│
+│   ├── forms/               # Form structs (if separating for clarity)
+│   │   ├── mod.rs
+│   │   └── new_entry.rs
+│
+│   └── utils/               # Helper functions (e.g. auth/session utils)
+│       ├── mod.rs
+│       └── password.rs
+│
+└── static/                  # Static assets (CSS, JS, favicon)
+    └── styles.css           # Tailwind, custom CSS, etc.
