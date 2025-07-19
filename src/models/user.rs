@@ -13,3 +13,10 @@ pub struct User{
     pub password_hash: String,
     pub creation_date: NaiveDateTime,
 }
+
+#[derive(Debug,Serialize,FromRow)]
+pub struct NewUser {
+    pub display_name: String,
+    pub email: String,
+    pub password_hash: String,
+}
