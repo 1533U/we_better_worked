@@ -8,14 +8,3 @@ pub(crate) async fn create_pool() -> SqlitePool {
     SqlitePool::connect(&db_url).await.unwrap()
 }
 
-pub(crate) async fn get_users(pool: &SqlitePool) -> Result<(), sqlx::Error> {
-
-    let users = sqlx::query!(
-        r#"SELECT display_name FROM user_tbl"#
-    ).fetch_all(pool).await?;
-
-    for user in users {
-        println!("{:?}", user);
-    }
-    Ok(())
-}

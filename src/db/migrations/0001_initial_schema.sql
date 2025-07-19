@@ -19,8 +19,8 @@ CREATE TABLE customer(
     last_modify_user_id INTEGER     NULL,
     last_modify_date    DATETIME DEFAULT CURRENT_TIMESTAMP,
     creation_date       DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (creation_user_id) REFERENCES user(user_id),
-    FOREIGN KEY (last_modify_user_id) REFERENCES user(user_id),
+    FOREIGN KEY (creation_user_id) REFERENCES user_tbl(user_id),
+    FOREIGN KEY (last_modify_user_id) REFERENCES user_tbl(user_id),
     UNIQUE (email),
     UNIQUE (name)
 );
@@ -36,8 +36,8 @@ CREATE TABLE base_framework(
     last_modify_user_id INTEGER     NULL,
     last_modify_date    DATETIME DEFAULT CURRENT_TIMESTAMP,
     creation_date       DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (creation_user_id) REFERENCES user(user_id),
-    FOREIGN KEY (last_modify_user_id) REFERENCES user(user_id),
+    FOREIGN KEY (creation_user_id) REFERENCES user_tbl(user_id),
+    FOREIGN KEY (last_modify_user_id) REFERENCES user_tbl(user_id),
     UNIQUE (name)
 );
 
@@ -51,8 +51,8 @@ CREATE TABLE framework_version(
     last_modify_user_id INTEGER     NULL,
     last_modify_date    DATETIME DEFAULT CURRENT_TIMESTAMP,
     creation_date       DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (creation_user_id) REFERENCES user(user_id),
-    FOREIGN KEY (last_modify_user_id) REFERENCES user(user_id),
+    FOREIGN KEY (creation_user_id) REFERENCES user_tbl(user_id),
+    FOREIGN KEY (last_modify_user_id) REFERENCES user_tbl(user_id),
 
     FOREIGN KEY (base_framework_id) REFERENCES base_framework(base_framework_id),
     UNIQUE (base_framework_id,version)
@@ -75,8 +75,8 @@ CREATE TABLE solution(
     last_modify_user_id INTEGER     NULL,
     last_modify_date    DATETIME DEFAULT CURRENT_TIMESTAMP,
     creation_date       DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (creation_user_id) REFERENCES user(user_id),
-    FOREIGN KEY (last_modify_user_id) REFERENCES user(user_id),
+    FOREIGN KEY (creation_user_id) REFERENCES user_tbl(user_id),
+    FOREIGN KEY (last_modify_user_id) REFERENCES user_tbl(user_id),
 
     FOREIGN KEY (os_connect_version_id) REFERENCES framework_version(framework_version_id),
     FOREIGN KEY (portal_version_id) REFERENCES framework_version(framework_version_id),
@@ -96,8 +96,8 @@ CREATE TABLE solution_module(
     last_modify_user_id INTEGER     NULL,
     last_modify_date    DATETIME DEFAULT CURRENT_TIMESTAMP,
     creation_date       DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (creation_user_id) REFERENCES user(user_id),
-    FOREIGN KEY (last_modify_user_id) REFERENCES user(user_id),
+    FOREIGN KEY (creation_user_id) REFERENCES user_tbl(user_id),
+    FOREIGN KEY (last_modify_user_id) REFERENCES user_tbl(user_id),
 
     FOREIGN KEY (solution_id) REFERENCES solution(solution_id)
 );
@@ -113,8 +113,8 @@ CREATE TABLE project(
     last_modify_user_id INTEGER     NULL,
     last_modify_date    DATETIME DEFAULT CURRENT_TIMESTAMP,
     creation_date       DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (creation_user_id) REFERENCES user(user_id),
-    FOREIGN KEY (last_modify_user_id) REFERENCES user(user_id),
+    FOREIGN KEY (creation_user_id) REFERENCES user_tbl(user_id),
+    FOREIGN KEY (last_modify_user_id) REFERENCES user_tbl(user_id),
 
     FOREIGN KEY (customer_id) REFERENCES customer(customer_id)
 );
@@ -133,8 +133,8 @@ CREATE TABLE feature(
     last_modify_user_id INTEGER     NULL,
     last_modify_date    DATETIME DEFAULT CURRENT_TIMESTAMP,
     creation_date       DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (creation_user_id) REFERENCES user(user_id),
-    FOREIGN KEY (last_modify_user_id) REFERENCES user(user_id),
+    FOREIGN KEY (creation_user_id) REFERENCES user_tbl(user_id),
+    FOREIGN KEY (last_modify_user_id) REFERENCES user_tbl(user_id),
 
     FOREIGN KEY (project_id) REFERENCES project(project_id),
     FOREIGN KEY (solution_module_id) REFERENCES solution_module(solution_module_id),
@@ -159,8 +159,8 @@ CREATE TABLE task(
     last_modify_user_id     INTEGER NULL,
     last_modify_date        DATETIME DEFAULT CURRENT_TIMESTAMP,
     creation_date           DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (creation_user_id) REFERENCES user(user_id),
-    FOREIGN KEY (last_modify_user_id) REFERENCES user(user_id),
+    FOREIGN KEY (creation_user_id) REFERENCES user_tbl(user_id),
+    FOREIGN KEY (last_modify_user_id) REFERENCES user_tbl(user_id),
     FOREIGN KEY (project_id) REFERENCES project(project_id),
     FOREIGN KEY (feature_id) REFERENCES feature(feature_id),
     FOREIGN KEY (solution_module_id) REFERENCES solution_module(solution_module_id),
@@ -183,12 +183,12 @@ CREATE TABLE we_worked(
     last_modify_user_id     INTEGER NULL,
     last_modify_date        DATETIME DEFAULT CURRENT_TIMESTAMP,
     creation_date           DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (creation_user_id) REFERENCES user(user_id),
-    FOREIGN KEY (last_modify_user_id) REFERENCES user(user_id),
+    FOREIGN KEY (creation_user_id) REFERENCES user_tbl(user_id),
+    FOREIGN KEY (last_modify_user_id) REFERENCES user_tbl(user_id),
     FOREIGN KEY (project_id) REFERENCES project(project_id),
     FOREIGN KEY (feature_id) REFERENCES feature(feature_id),
     FOREIGN KEY (task_id) REFERENCES task(task_id),
-    FOREIGN KEY (worker_user_id) REFERENCES user(user_id),
+    FOREIGN KEY (worker_user_id) REFERENCES user_tbl(user_id),
     CHECK (feature_id IS  NULL OR task_id IS  NULL)
 
 );

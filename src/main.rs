@@ -1,4 +1,8 @@
 mod db;
+mod queries;
+mod models;
+
+use queries::user as user_queries;
 
 #[tokio::main(flavor = "current_thread")]
 async fn main() {
@@ -7,5 +11,9 @@ async fn main() {
     println!("{:?}", pool);
 
     //select users
-   let ok = db::connection::get_users(&pool).await;
+    let users = user_queries::get_all_users(&pool).await.unwrap();
+    for user in users {
+        println!("{:?}", user);
+    }
+
 }

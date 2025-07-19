@@ -1,0 +1,50 @@
+{
+  "db_name": "SQLite",
+  "query": "\n        SELECT user_id, display_name, email, active, password_hash, creation_date\n        FROM user_tbl\n        ",
+  "describe": {
+    "columns": [
+      {
+        "name": "user_id",
+        "ordinal": 0,
+        "type_info": "Integer"
+      },
+      {
+        "name": "display_name",
+        "ordinal": 1,
+        "type_info": "Text"
+      },
+      {
+        "name": "email",
+        "ordinal": 2,
+        "type_info": "Text"
+      },
+      {
+        "name": "active",
+        "ordinal": 3,
+        "type_info": "Bool"
+      },
+      {
+        "name": "password_hash",
+        "ordinal": 4,
+        "type_info": "Text"
+      },
+      {
+        "name": "creation_date",
+        "ordinal": 5,
+        "type_info": "Datetime"
+      }
+    ],
+    "parameters": {
+      "Right": 0
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "8e12e788fbaefadaf11b3e751630b6b0fc4518e32db044e91d84d896d9f5833b"
+}
