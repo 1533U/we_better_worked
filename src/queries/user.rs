@@ -33,3 +33,21 @@ pub async fn insert_user(pool: &SqlitePool,user: user::NewUser) -> Result<i64,sq
 
     Ok(id)
 }
+
+pub async fn update_user(pool: &SqlitePool, user: user::UpdateUser) -> Result<(), sqlx::Error>{
+    sqlx::query!(
+        "UPDATE user_tbl SET display_name = ?, email = ?, active = ?, password_hash = ? WHERE user_id = ?",
+        user.display_name,
+        user.email,
+        user.active,
+        user.password_hash,
+        user.user_id
+    )   
+    .execute(pool)
+    .await?;
+
+    Ok(())
+
+}
+
+//user should never be deleted in code

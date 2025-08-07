@@ -5,7 +5,9 @@ CREATE TABLE user_tbl(
     email           TEXT    NOT NULL,
     active          BOOLEAN NOT NULL DEFAULT 1,
     password_hash   TEXT    NOT NULL,
-    creation_date   DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    creation_date   DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE (email)
+
 );
 
 -- Clients' table

@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "UPDATE user_tbl SET display_name = ?, email = ?, active = ?, password_hash = ? WHERE user_id = ?",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 5
+    },
+    "nullable": []
+  },
+  "hash": "1011c852dbb1ab77bd4723692134cd53d102d981e600b69a2487aa7b01e91dac"
+}

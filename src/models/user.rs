@@ -20,3 +20,12 @@ pub struct NewUser {
     pub email: String,
     pub password_hash: String,
 }
+
+#[derive(Debug,Serialize,FromRow)]
+pub struct UpdateUser {
+    pub user_id: i64,
+    pub display_name: String,
+    pub email: String,
+    pub active: bool,
+    pub password_hash: String,
+}
