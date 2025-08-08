@@ -28,3 +28,7 @@ This project serves as a hands-on way to learn Rust, while experimenting with ba
 - Mobile-friendly UI
 - Project tags/categories
 - OAuth login (Google/GitHub)
+
+
+## My Notes
+export DATABASE_URL=sqlite://$(pwd)/db/we_better_worked.db

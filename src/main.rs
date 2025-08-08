@@ -26,7 +26,7 @@ async fn main() {
     }
 
     //update user
-    let user = models::user::UpdateUser { display_name: "foo".to_string(), email: "foo5@foo".to_string(), active: true, password_hash: "foo".to_string(), user_id:5};
+    let user = models::user::UpdateUser { display_name: "foo".to_string(), email: "foo5@foo".to_string(), active: true, password_hash: "foo".to_string(), user_id:1};
     match user_queries::update_user(&pool, user).await {
         Ok(()) => println!("Updated user"),
         Err(e) => println!("Error updating user: {}", e),
