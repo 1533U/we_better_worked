@@ -18,9 +18,9 @@ CREATE TABLE customer(
     active              BOOLEAN NOT NULL DEFAULT 1,
 
     creation_user_id    INTEGER NOT NULL,
-    last_modify_user_id INTEGER     NULL,
-    last_modify_date    DATETIME DEFAULT CURRENT_TIMESTAMP,
-    creation_date       DATETIME DEFAULT CURRENT_TIMESTAMP,
+    last_modify_user_id INTEGER NOT NULL,
+    creation_date       DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    last_modify_date    DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (creation_user_id) REFERENCES user_tbl(user_id),
     FOREIGN KEY (last_modify_user_id) REFERENCES user_tbl(user_id),
     UNIQUE (email),

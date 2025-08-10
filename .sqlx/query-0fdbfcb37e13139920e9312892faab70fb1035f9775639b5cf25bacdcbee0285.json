@@ -1,0 +1,62 @@
+{
+  "db_name": "SQLite",
+  "query": "\n        SELECT customer_id, name, email, active, creation_user_id, last_modify_user_id, last_modify_date, creation_date\n        FROM customer\n        ",
+  "describe": {
+    "columns": [
+      {
+        "name": "customer_id",
+        "ordinal": 0,
+        "type_info": "Integer"
+      },
+      {
+        "name": "name",
+        "ordinal": 1,
+        "type_info": "Text"
+      },
+      {
+        "name": "email",
+        "ordinal": 2,
+        "type_info": "Text"
+      },
+      {
+        "name": "active",
+        "ordinal": 3,
+        "type_info": "Bool"
+      },
+      {
+        "name": "creation_user_id",
+        "ordinal": 4,
+        "type_info": "Integer"
+      },
+      {
+        "name": "last_modify_user_id",
+        "ordinal": 5,
+        "type_info": "Integer"
+      },
+      {
+        "name": "last_modify_date",
+        "ordinal": 6,
+        "type_info": "Datetime"
+      },
+      {
+        "name": "creation_date",
+        "ordinal": 7,
+        "type_info": "Datetime"
+      }
+    ],
+    "parameters": {
+      "Right": 0
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      true,
+      true,
+      true
+    ]
+  },
+  "hash": "0fdbfcb37e13139920e9312892faab70fb1035f9775639b5cf25bacdcbee0285"
+}
