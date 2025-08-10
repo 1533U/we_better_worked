@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "INSERT INTO customer (name, email, active, creation_user_id, last_modify_user_id, last_modify_date, creation_date)\n        VALUES (?, ?, ?, ?, ?, datetime('now'), datetime('now'))",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 5
+    },
+    "nullable": []
+  },
+  "hash": "82dda2ec75c09105d1f2591b16541a90f714ae2f7d3d54c853a88230e1f56093"
+}

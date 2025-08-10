@@ -29,9 +29,7 @@ pub async fn insert_user(pool: &SqlitePool,user: user::NewUser) -> Result<i64,sq
     .execute(pool)
     .await?;
 
-    let id = sqlx::query_scalar!("SELECT last_insert_rowid()").fetch_one(pool).await?;
-
-    Ok(id)
+    Ok(sqlx::query_scalar!("SELECT last_insert_rowid()").fetch_one(pool).await?)
 }
 
 pub async fn update_user(pool: &SqlitePool, user: user::UpdateUser) -> Result<(), sqlx::Error>{

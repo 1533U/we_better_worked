@@ -1,11 +1,11 @@
 -- Users' table
 CREATE TABLE user_tbl(
     user_id         INTEGER PRIMARY KEY AUTOINCREMENT,
-    display_name    TEXT    NOT NULL,
-    email           TEXT    NOT NULL,
-    active          BOOLEAN NOT NULL DEFAULT 1,
-    password_hash   TEXT    NOT NULL,
-    creation_date   DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    display_name    TEXT        NOT NULL,
+    email           TEXT        NOT NULL,
+    active          BOOLEAN     NOT NULL DEFAULT 1,
+    password_hash   TEXT        NOT NULL,
+    creation_date   DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     UNIQUE (email)
 
 );
@@ -13,14 +13,14 @@ CREATE TABLE user_tbl(
 -- Clients' table
 CREATE TABLE customer(
     customer_id         INTEGER PRIMARY KEY AUTOINCREMENT,
-    name                TEXT NOT NULL,
-    email               TEXT NOT NULL,
-    active              BOOLEAN NOT NULL DEFAULT 1,
+    name                TEXT        NOT NULL,
+    email               TEXT        NOT NULL,
+    active              BOOLEAN     NOT NULL DEFAULT 1,
 
-    creation_user_id    INTEGER NOT NULL,
-    last_modify_user_id INTEGER NOT NULL,
-    creation_date       DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    last_modify_date    DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    creation_user_id    INTEGER     NOT NULL,
+    last_modify_user_id INTEGER     NOT NULL,
+    creation_date       DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    last_modify_date    DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (creation_user_id) REFERENCES user_tbl(user_id),
     FOREIGN KEY (last_modify_user_id) REFERENCES user_tbl(user_id),
     UNIQUE (email),
@@ -30,14 +30,14 @@ CREATE TABLE customer(
 --Frameworks' table
 CREATE TABLE base_framework(
     base_framework_id   INTEGER PRIMARY KEY AUTOINCREMENT,
-    name                TEXT    NOT NULL,
-    active              BOOLEAN DEFAULT 1,
-    github_repo         TEXT        NULL,
+    name                TEXT        NOT NULL,
+    active              BOOLEAN     NOT NULL DEFAULT 1,
+    github_repo         TEXT            NULL,
 
-    creation_user_id    INTEGER NOT NULL,
-    last_modify_user_id INTEGER     NULL,
-    last_modify_date    DATETIME DEFAULT CURRENT_TIMESTAMP,
-    creation_date       DATETIME DEFAULT CURRENT_TIMESTAMP,
+    creation_user_id    INTEGER     NOT NULL,
+    last_modify_user_id INTEGER     NOT NULL,
+    last_modify_date    DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    creation_date       DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (creation_user_id) REFERENCES user_tbl(user_id),
     FOREIGN KEY (last_modify_user_id) REFERENCES user_tbl(user_id),
     UNIQUE (name)
@@ -49,10 +49,10 @@ CREATE TABLE framework_version(
     version                TEXT    NOT NULL,
     active                 BOOLEAN NOT NULL DEFAULT 1,
 
-    creation_user_id    INTEGER NOT NULL,
-    last_modify_user_id INTEGER     NULL,
-    last_modify_date    DATETIME DEFAULT CURRENT_TIMESTAMP,
-    creation_date       DATETIME DEFAULT CURRENT_TIMESTAMP,
+    creation_user_id    INTEGER     NOT NULL,
+    last_modify_user_id INTEGER     NOT NULL,
+    last_modify_date    DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    creation_date       DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (creation_user_id) REFERENCES user_tbl(user_id),
     FOREIGN KEY (last_modify_user_id) REFERENCES user_tbl(user_id),
 
@@ -73,10 +73,10 @@ CREATE TABLE solution(
     hosted                          TEXT        NULL,
     requires_vpn                    BOOLEAN     NULL,
 
-    creation_user_id    INTEGER NOT NULL,
-    last_modify_user_id INTEGER     NULL,
-    last_modify_date    DATETIME DEFAULT CURRENT_TIMESTAMP,
-    creation_date       DATETIME DEFAULT CURRENT_TIMESTAMP,
+    creation_user_id    INTEGER     NOT NULL,
+    last_modify_user_id INTEGER     NOT NULL,
+    last_modify_date    DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    creation_date       DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (creation_user_id) REFERENCES user_tbl(user_id),
     FOREIGN KEY (last_modify_user_id) REFERENCES user_tbl(user_id),
 
@@ -94,10 +94,10 @@ CREATE TABLE solution_module(
     solution_id         INTEGER NOT NULL,
     github_repo         TEXT        NULL,
 
-    creation_user_id    INTEGER NOT NULL,
-    last_modify_user_id INTEGER     NULL,
-    last_modify_date    DATETIME DEFAULT CURRENT_TIMESTAMP,
-    creation_date       DATETIME DEFAULT CURRENT_TIMESTAMP,
+    creation_user_id    INTEGER     NOT NULL,
+    last_modify_user_id INTEGER     NOT NULL,
+    last_modify_date    DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    creation_date       DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (creation_user_id) REFERENCES user_tbl(user_id),
     FOREIGN KEY (last_modify_user_id) REFERENCES user_tbl(user_id),
 
@@ -111,10 +111,10 @@ CREATE TABLE project(
     description     TEXT     NULL,
     customer_id     INTEGER NOT NULL,
 
-    creation_user_id    INTEGER NOT NULL,
-    last_modify_user_id INTEGER     NULL,
-    last_modify_date    DATETIME DEFAULT CURRENT_TIMESTAMP,
-    creation_date       DATETIME DEFAULT CURRENT_TIMESTAMP,
+    creation_user_id    INTEGER     NOT NULL,
+    last_modify_user_id INTEGER     NOT NULL,
+    last_modify_date    DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    creation_date       DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (creation_user_id) REFERENCES user_tbl(user_id),
     FOREIGN KEY (last_modify_user_id) REFERENCES user_tbl(user_id),
 
@@ -131,10 +131,10 @@ CREATE TABLE feature(
     solution_module_id      INTEGER NULL,
     framework_version_id    INTEGER NULL,
 
-    creation_user_id    INTEGER NOT NULL,
-    last_modify_user_id INTEGER     NULL,
-    last_modify_date    DATETIME DEFAULT CURRENT_TIMESTAMP,
-    creation_date       DATETIME DEFAULT CURRENT_TIMESTAMP,
+    creation_user_id    INTEGER     NOT NULL,
+    last_modify_user_id INTEGER     NOT NULL,
+    last_modify_date    DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    creation_date       DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (creation_user_id) REFERENCES user_tbl(user_id),
     FOREIGN KEY (last_modify_user_id) REFERENCES user_tbl(user_id),
 
@@ -157,10 +157,10 @@ CREATE TABLE task(
     solution_module_id      INTEGER NULL,
     framework_version_id    INTEGER NULL,
 
-    creation_user_id        INTEGER NOT NULL,
-    last_modify_user_id     INTEGER NULL,
-    last_modify_date        DATETIME DEFAULT CURRENT_TIMESTAMP,
-    creation_date           DATETIME DEFAULT CURRENT_TIMESTAMP,
+    creation_user_id        INTEGER     NOT NULL,
+    last_modify_user_id     INTEGER     NOT NULL,
+    last_modify_date        DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    creation_date           DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (creation_user_id) REFERENCES user_tbl(user_id),
     FOREIGN KEY (last_modify_user_id) REFERENCES user_tbl(user_id),
     FOREIGN KEY (project_id) REFERENCES project(project_id),
@@ -172,19 +172,19 @@ CREATE TABLE task(
 );
 
 CREATE TABLE we_worked(
-    we_worked_id    INTEGER PRIMARY KEY AUTOINCREMENT,
-    worker_user_id  INTEGER NOT NULL,
-    date            DATE    NOT NULL,
-    effort_minutes  INTEGER NOT NULL,
-    project_id      INTEGER NOT NULL,
-    feature_id      INTEGER     NULL,
-    task_id         INTEGER     NULL,
-    is_billable      BOOLEAN NOT NULL DEFAULT 1,
+    we_worked_id        INTEGER PRIMARY KEY AUTOINCREMENT,
+    worker_user_id      INTEGER NOT NULL,
+    date                DATE    NOT NULL,
+    effort_minutes      INTEGER NOT NULL,
+    project_id          INTEGER NOT NULL,
+    feature_id          INTEGER     NULL,
+    task_id             INTEGER     NULL,
+    is_billable         BOOLEAN NOT NULL DEFAULT 1,
 
-    creation_user_id        INTEGER NOT NULL,
-    last_modify_user_id     INTEGER NULL,
-    last_modify_date        DATETIME DEFAULT CURRENT_TIMESTAMP,
-    creation_date           DATETIME DEFAULT CURRENT_TIMESTAMP,
+    creation_user_id    INTEGER     NOT NULL,
+    last_modify_user_id INTEGER     NOT NULL,
+    last_modify_date    DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    creation_date       DATETIME    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (creation_user_id) REFERENCES user_tbl(user_id),
     FOREIGN KEY (last_modify_user_id) REFERENCES user_tbl(user_id),
     FOREIGN KEY (project_id) REFERENCES project(project_id),
