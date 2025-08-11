@@ -49,3 +49,24 @@ pub async fn update_user(pool: &SqlitePool, user: user::UpdateUser) -> Result<()
 }
 
 //user should never be deleted in code
+
+
+pub async fn get_user_by_id(pool: &SqlitePool, user_id: i64) -> Result<Option<user::User>, sqlx::Error> {
+    sqlx::query_as!(
+        user::User,
+        "SELECT user_id, display_name, email, active, password_hash, creation_date FROM user_tbl WHERE user_id = ?",
+        user_id
+    )
+    .fetch_optional(pool)
+    .await
+}
+
+pub async fn get_user_by_email(pool: &SqlitePool, email: &str) -> Result<Option<user::User>, sqlx::Error> {
+    sqlx::query_as!(
+        user::User,
+        "SELECT user_id, display_name, email, active, password_hash, creation_date FROM user_tbl WHERE email = ?",
+        email
+    )
+    .fetch_optional(pool)
+    .await
+}

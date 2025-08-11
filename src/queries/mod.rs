@@ -1,3 +1,3 @@
-pub(crate) mod user; // Restrict user module to crate
-pub(crate) mod customer; // Restrict customer module to crate
+pub(crate) mod user_queries; // Restrict user module to crate
+pub(crate) mod customer_queries; // Restrict customer module to crate
 

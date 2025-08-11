@@ -1,6 +1,6 @@
 -- Users' table
 CREATE TABLE user_tbl(
-    user_id         INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id         INTEGER     NOT NULL PRIMARY KEY AUTOINCREMENT,
     display_name    TEXT        NOT NULL,
     email           TEXT        NOT NULL,
     active          BOOLEAN     NOT NULL DEFAULT 1,
@@ -12,7 +12,7 @@ CREATE TABLE user_tbl(
 
 -- Clients' table
 CREATE TABLE customer(
-    customer_id         INTEGER PRIMARY KEY AUTOINCREMENT,
+    customer_id         INTEGER     NOT NULL PRIMARY KEY AUTOINCREMENT,
     name                TEXT        NOT NULL,
     email               TEXT        NOT NULL,
     active              BOOLEAN     NOT NULL DEFAULT 1,
@@ -29,7 +29,7 @@ CREATE TABLE customer(
 
 --Frameworks' table
 CREATE TABLE base_framework(
-    base_framework_id   INTEGER PRIMARY KEY AUTOINCREMENT,
+    base_framework_id   INTEGER     NOT NULL PRIMARY KEY AUTOINCREMENT,
     name                TEXT        NOT NULL,
     active              BOOLEAN     NOT NULL DEFAULT 1,
     github_repo         TEXT            NULL,
@@ -44,7 +44,7 @@ CREATE TABLE base_framework(
 );
 
 CREATE TABLE framework_version(
-    framework_version_id   INTEGER PRIMARY KEY AUTOINCREMENT,
+    framework_version_id   INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     base_framework_id      INTEGER NOT NULL,
     version                TEXT    NOT NULL,
     active                 BOOLEAN NOT NULL DEFAULT 1,
@@ -62,7 +62,7 @@ CREATE TABLE framework_version(
 
 --solutions' table
 CREATE TABLE solution(
-    solution_id             INTEGER PRIMARY KEY AUTOINCREMENT,
+    solution_id             INTEGER         NOT NULL PRIMARY KEY AUTOINCREMENT,
     name                            TEXT    NOT NULL,
     customer_id                     INTEGER NOT NULL,
     url                             TEXT    NOT NULL,
@@ -88,7 +88,7 @@ CREATE TABLE solution(
 );
 
 CREATE TABLE solution_module(
-    solution_module_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    solution_module_id INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT,
     name                TEXT    NOT NULL,
     description         TEXT    NOT NULL,
     solution_id         INTEGER NOT NULL,
@@ -106,7 +106,7 @@ CREATE TABLE solution_module(
 
 --Projects
 CREATE TABLE project(
-    project_id      INTEGER PRIMARY KEY AUTOINCREMENT,
+    project_id      INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT,
     name            TEXT NOT NULL,
     description     TEXT     NULL,
     customer_id     INTEGER NOT NULL,
@@ -123,7 +123,7 @@ CREATE TABLE project(
 
 --Features
 CREATE TABLE feature(
-    feature_id  INTEGER PRIMARY KEY AUTOINCREMENT,
+    feature_id  INTEGER     NOT NULL PRIMARY KEY AUTOINCREMENT,
     name            TEXT    NOT NULL,
     project_id      INTEGER NOT NULL,
     description     TEXT        NULL,
@@ -147,7 +147,7 @@ CREATE TABLE feature(
 
 --tasks
 CREATE TABLE task(
-    task_id                 INTEGER PRIMARY KEY AUTOINCREMENT,
+    task_id                 INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     name                    TEXT    NOT NULL,
     customer_id             INTEGER NOT NULL,
     project_id              INTEGER NOT NULL,
@@ -172,7 +172,7 @@ CREATE TABLE task(
 );
 
 CREATE TABLE we_worked(
-    we_worked_id        INTEGER PRIMARY KEY AUTOINCREMENT,
+    we_worked_id        INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     worker_user_id      INTEGER NOT NULL,
     date                DATE    NOT NULL,
     effort_minutes      INTEGER NOT NULL,

@@ -1,35 +1,46 @@
-we-better-worked/
+we_better_worked/
 ├── Cargo.toml
-├── .env                     # (optional) Environment config (DB path, etc.)
+├── Cargo.lock
+├── .env                         # Environment variables (DB URL, secrets)
+├── db/
+│   ├── we_better_worked.db      # SQLite database file
+│   └── migrations/              # SQL migration scripts
+│       └── 0001_initial_schema.sql
 ├── src/
-│   ├── main.rs              # App entry point, server setup
-│   ├── lib.rs               # (optional) Shared setup
-│
-│   ├── db/                  # Database logic
+│   ├── main.rs                  # Application entry point
+│   ├── config.rs                # Configuration loader (env vars, settings)
+│   ├── db/
+│   │   ├── mod.rs               # DB module root
+│   │   ├── connection.rs        # DB pool setup and migration helpers
+│   │   ├── models/
+│   │   │   ├── mod.rs           # Re-export all models here
+│   │   │   ├── user.rs          # User struct and related types
+│   │   │   └── customer.rs      # Customer struct etc.
+│   │   └── queries/
+│   │       ├── mod.rs           # Re-export query functions
+│   │       ├── user.rs          # User-specific queries (CRUD)
+│   │       └── customer.rs      # Customer queries
+│   ├── routes/
+│   │   ├── mod.rs               # Re-export route handlers
+│   │   ├── auth.rs              # Authentication routes (login, register)
+│   │   ├── dashboard.rs         # Main app dashboard routes
+│   │   └── entries.rs           # Time entry CRUD routes
+│   ├── services/                # Business logic (optional but recommended)
 │   │   ├── mod.rs
-│   │   ├── models.rs        # Data types, structs
-│   │   ├── queries.rs       # SQL queries (or inline in handlers)
-│   │   └── migrations/      # SQL migration files (if using sqlx-cli)
-│
-│   ├── routes/              # HTTP handlers
-│   │   ├── mod.rs
-│   │   ├── auth.rs          # login, register
-│   │   ├── dashboard.rs     # main logged-in user view
-│   │   └── entries.rs       # time entry create/edit/delete
-│
-│   ├── templates/           # HTML templates (e.g. with Askama, minijinja)
-│   │   ├── base.html        # layout shell
+│   │   └── user_service.rs
+│   ├── templates/               # HTML templates (Askama, Tera, etc.)
+│   │   ├── base.html
 │   │   ├── login.html
 │   │   ├── dashboard.html
-│   │   └── partials/        # e.g. HTMX fragments
-│
-│   ├── forms/               # Form structs (if separating for clarity)
+│   │   └── partials/
+│   ├── forms/                  # Form data parsing & validation structs
 │   │   ├── mod.rs
 │   │   └── new_entry.rs
-│
-│   └── utils/               # Helper functions (e.g. auth/session utils)
-│       ├── mod.rs
-│       └── password.rs
-│
-└── static/                  # Static assets (CSS, JS, favicon)
-    └── styles.css           # Tailwind, custom CSS, etc.
+│   ├── utils/                  # Helper utilities (password hashing, auth)
+│   │   ├── mod.rs
+│   │   └── password.rs
+│   └── static/                 # Static assets (CSS, JS, images)
+│       ├── css/
+│       └── js/
+└── tests/
+    └── integration_test.rs     # Integration tests

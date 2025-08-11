@@ -30,12 +30,3 @@ This project serves as a hands-on way to learn Rust, while experimenting with ba
 - OAuth login (Google/GitHub)
 
 
-## My Notes
-
--local
-export DATABASE_URL=sqlite:///home/gerhard/Dev/we_better_worked/db/we_better_worked
-cargo sqlx prepare
-
--codespaces
-export DATABASE_URL=sqlite://$(pwd)/db/we_better_worked.db
-cargo sqlx prepare
